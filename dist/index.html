@@ -96,7 +96,7 @@
     </style>
 
     <style type="text/css">
-      #map {  height:550px; width:700px; margin: 10px; }
+      #map {  height:550px; width:100%; max-width: 700px; margin: 10px 0; }
       h1 {
         font-size: 2em;
         margin: 10px;
@@ -112,6 +112,10 @@
       button.pause {
         width: 120px;
       }
+      pre {
+        white-space: pre;
+        font-family: monospace;
+      }
       /* #map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%; } */
       /* #date { position: absolute; top: 10px; left: 10px; width: 100px; height: 20px; } */
     </style>
@@ -125,6 +129,7 @@
       <button class="pause">Pause</button>
     </div>
     <div id="map"></div>
+    <pre id="data"></pre>
   </body>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
@@ -134,42 +139,71 @@
     // easiest data structure
     // lookup by date, then by id... or do you just want the whole geojson foreach date
 
-    const baseURL = "http://localhost:8000/api/geoJSON/";
+    const baseURL = "http://192.168.1.6:8000/api/geoJSON/";
     const startDate = new Date("2018-10-01");
     const maxDate = new Date("2019-07-01");
+    
     let currentDate = new Date(startDate);
+    const elData = document.getElementById("data");
 
-    const delay = 1000;
+
+    const delay = 100;
 
     function dateFormat(date) {
-      return date.toISOString().split('T')[0];
+      return date.toISOString().split("T")[0];
     }
 
     function getDataURL() {
       return baseURL + dateFormat(currentDate) + "/";
     }
 
-    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
-    mapboxgl.AnimationOptions = {
-      duration: 300,
-      easing: "linear"
-    };
+    function updateTable(sites) {
+      // a little annoying these aren't already sorted as the API is returning them sorted
+      let rendered = sites.sort(
+        function(a,b) {
+          return b.properties.snow - a.properties.snow;
+        })
+        .map(site => {
+          let prop = site.properties;
 
+          return [
+            prop.stationId,
+            prop.name,
+            prop.county,
+            prop.snow
+          ].join("\t\t");
+        }
+      );
+
+      rendered.unshift(["Station Id", "Station Name", "County", "Snow Depth (in)"].join("\t\t"));
+      elData.innerHTML = rendered.join("\n");
+    }
+
+    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
+   
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/light-v10",
-      transition: {
-        duration: 300,
-        delay: 0
-      },
+      style: "mapbox://styles/mapbox/outdoors-v10",
       center: [-105.552, 39.0311],
       zoom: 6,
       maxZoom: 10
     });
 
     //constrain to Colorado
-    map.setMaxBounds(map.getBounds());
+    // map.setMaxBounds(map.getBounds());
     // map.setMaxZoom(10);
+
+    map.on("zoomend", () => {
+      updateTable(map.queryRenderedFeatures(
+        { layers: ["snotel-sites"] }
+      ));
+    });
+
+    map.on("moveend", () => {
+      updateTable(map.queryRenderedFeatures(
+        { layers: ["snotel-sites"] }
+      ));
+    });
 
     map.on("load", () => {
       map.addSource("snotel-snow", {
@@ -224,7 +258,7 @@
             1.0, "#B48EAD",
             // 1.0, "rgb(33,102,172)"
           ],
-          // "heatmap-opacity": .4,
+          "heatmap-opacity": .75,
           // Adjust the heatmap radius by zoom level
           "heatmap-radius": [
             "interpolate",
@@ -247,11 +281,13 @@
           "text-field": "{name}",
           "text-size": 8,
           "text-offset": [0, 1],
-          "text-anchor  ": "top"
+          "text-anchor": "top"
         }
       });
 
       let isPaused = false;
+      let timeoutId = null;
+
       function updateSnow() {
         if (currentDate < maxDate) {
           currentDate.setDate(currentDate.getDate()+1);
@@ -267,19 +303,17 @@
           document.getElementById("date").innerHTML = dateFormat(currentDate);
 
           // debugger;
-          let f = map.queryRenderedFeatures(
+          updateTable(map.queryRenderedFeatures(
             { layers: ["snotel-sites"] }
-          );
-
-          console.log(f.length, f[0]);
+          ));
 
           if (!isPaused) {
-            setTimeout(updateSnow, delay);
+            timeoutId = setTimeout(updateSnow, delay);
           }
         });
       }
 
-      setTimeout(updateSnow, delay);
+      timeoutId = setTimeout(updateSnow, delay);
 
       document.querySelector("button").addEventListener("click", (event) => {
         if (isPaused) {
@@ -288,6 +322,7 @@
           updateSnow();
         }
         else {
+          clearTimeout(timeoutId);
           event.srcElement.innerHTML = "Resume";
           isPaused = true;
         }

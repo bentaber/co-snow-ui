@@ -124,7 +124,7 @@
   </head>
 
   <body>
-    <h1 id="date">2018-10-01</h1>
+    <h1 id="date">Oct 01 2018</h1>
     <div class="controls">
       <button class="pause">Pause</button>
     </div>
@@ -145,65 +145,112 @@
     
     let currentDate = new Date(startDate);
     const elData = document.getElementById("data");
+    const elDate = document.getElementById("date");
+    const delay = 500;
 
-
-    const delay = 100;
-
-    function dateFormat(date) {
-      return date.toISOString().split("T")[0];
+    function dateFormat(date, type) {
+      if ("display" == type) {
+        let d = new Date(date);
+        d.setMinutes(date.getMinutes()+date.getTimezoneOffset());
+        return d.toDateString().substr(4);
+      }
+      else {
+        // YYYY-MM-DD
+        return date.toISOString().split("T")[0];
+      }
     }
 
     function getDataURL() {
       return baseURL + dateFormat(currentDate) + "/";
     }
 
-    function updateTable(sites) {
-      // a little annoying these aren't already sorted as the API is returning them sorted
-      let rendered = sites.sort(
-        function(a,b) {
-          return b.properties.snow - a.properties.snow;
-        })
-        .map(site => {
+    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
+   
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/light-v10",
+      center: [-105.552, 39.0311],
+      zoom: 6,
+      minZoom: 5.5,
+      maxZoom: 12
+    });
+
+    let isPaused = false;
+    let timeoutId = null;
+    
+    function nextSnow() {
+      if (isPaused) {
+        return;
+      }
+
+      console.log('next snow', timeoutId);
+      
+      timeoutId = setTimeout(() => {
+        if (currentDate < maxDate) {
+          currentDate.setDate(currentDate.getDate()+1);
+        }
+        else {
+          currentDate = new Date(startDate);
+        }
+
+        // is this too lazy?  lots of room to improve performance over this approach
+        map.getSource("snotel-snow").setData(getDataURL());
+        map.once("sourcedata", () => {
+          updateDate();
+          updateTable();
+          nextSnow();
+        });
+        
+      }, delay);
+    }
+
+    function updateTable() {
+      // let rendered = sites.sort(
+      //   function(a,b) {
+      //     return b.properties.snow - a.properties.snow;
+      //   })
+
+      const sites = map.queryRenderedFeatures(
+        { layers: ["snotel-sites"] }
+      );
+      
+      let rendered = sites.map(site => {
           let prop = site.properties;
 
           return [
             prop.stationId,
             prop.name,
             prop.county,
+            prop.elevation,
             prop.snow
           ].join("\t\t");
         }
       );
 
-      rendered.unshift(["Station Id", "Station Name", "County", "Snow Depth (in)"].join("\t\t"));
+      rendered.unshift(["Station Id", "Station Name", "County", "Elevation", "Snow Depth (in)"].join("\t\t"));
       elData.innerHTML = rendered.join("\n");
     }
 
-    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
-   
-    const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/outdoors-v10",
-      center: [-105.552, 39.0311],
-      zoom: 6,
-      maxZoom: 10
+    function updateDate() {
+      elDate.innerHTML = dateFormat(currentDate, "display");
+    }
+    
+    
+    document.querySelector("button").addEventListener("click", (event) => {
+      if (isPaused) {
+        isPaused = false;
+        event.srcElement.innerHTML = "Pause";
+        nextSnow();
+      }
+      else {
+        clearTimeout(timeoutId);
+        event.srcElement.innerHTML = "Resume";
+        isPaused = true;
+      }
     });
-
+    
     //constrain to Colorado
     // map.setMaxBounds(map.getBounds());
-    // map.setMaxZoom(10);
-
-    map.on("zoomend", () => {
-      updateTable(map.queryRenderedFeatures(
-        { layers: ["snotel-sites"] }
-      ));
-    });
-
-    map.on("moveend", () => {
-      updateTable(map.queryRenderedFeatures(
-        { layers: ["snotel-sites"] }
-      ));
-    });
 
     map.on("load", () => {
       map.addSource("snotel-snow", {
@@ -236,17 +283,6 @@
           // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
           // Begin color ramp at 0-stop with a 0-transparancy color
           // to create a blur-like effect.
-          // "heatmap-color": [
-          //   "interpolate",
-          //   ["linear"],
-          //   ["heatmap-density"],
-          //   0, "rgba(33,102,172,0)",
-          //   0.2, "rgb(103,169,207)",
-          //   0.4, "rgb(209,229,240)",
-          //   0.6, "rgb(253,219,199)",
-          //   0.8, "rgb(239,138,98)",
-          //   1, "rgb(178,24,43)"
-          // ],
           "heatmap-color": [
             "interpolate",
             ["linear"],
@@ -265,7 +301,6 @@
             ["linear"],
             ["zoom"],
             0, 2,
-            // 4, 10,
             6, 35,
             9, 200
           ],
@@ -277,58 +312,17 @@
         type: "symbol",
         source: "snotel-snow",
         layout: {
-          "icon-image": "monument-15",
+          "icon-image": "mountain-15",
           "text-field": "{name}",
-          "text-size": 8,
+          "text-size": 11,
           "text-offset": [0, 1],
           "text-anchor": "top"
         }
       });
 
-      let isPaused = false;
-      let timeoutId = null;
-
-      function updateSnow() {
-        if (currentDate < maxDate) {
-          currentDate.setDate(currentDate.getDate()+1);
-        }
-        else {
-          currentDate = new Date(startDate);
-        }
-
-        // is this too lazy?  lots of room to improve perf over this approach
-        map.getSource("snotel-snow").setData(getDataURL());
-
-        map.once("data", (e) => {
-          document.getElementById("date").innerHTML = dateFormat(currentDate);
-
-          // debugger;
-          updateTable(map.queryRenderedFeatures(
-            { layers: ["snotel-sites"] }
-          ));
-
-          if (!isPaused) {
-            timeoutId = setTimeout(updateSnow, delay);
-          }
-        });
-      }
-
-      timeoutId = setTimeout(updateSnow, delay);
-
-      document.querySelector("button").addEventListener("click", (event) => {
-        if (isPaused) {
-          isPaused = false;
-          event.srcElement.innerHTML = "Pause";
-          updateSnow();
-        }
-        else {
-          clearTimeout(timeoutId);
-          event.srcElement.innerHTML = "Resume";
-          isPaused = true;
-        }
-      });
-
-
+      map.on("zoomend", updateTable);
+      map.on("moveend", updateTable);
+      map.once("sourcedata", nextSnow);
     });
   </script>
 

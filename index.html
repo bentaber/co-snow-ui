@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>CO Snow :: 2018-19 Winter in Review</title>
+
+    <style type="text/css">
+      /* http://meyerweb.com/eric/tools/css/reset/ 
+        v2.0 | 20110126
+        License: none (public domain)
+      */
+      html, body, div, span, applet, object, iframe,
+      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+      a, abbr, acronym, address, big, cite, code,
+      del, dfn, em, img, ins, kbd, q, s, samp,
+      small, strike, strong, sub, sup, tt, var,
+      b, u, i, center,
+      dl, dt, dd, ol, ul, li,
+      fieldset, form, label, legend,
+      table, caption, tbody, tfoot, thead, tr, th, td,
+      article, aside, canvas, details, embed, 
+      figure, figcaption, footer, header, hgroup, 
+      menu, nav, output, ruby, section, summary,
+      time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      /* HTML5 display-role reset for older browsers */
+      article, aside, details, figcaption, figure, 
+      footer, header, hgroup, menu, nav, section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol, ul {
+        list-style: none;
+      }
+      blockquote, q {
+        quotes: none;
+      }
+      blockquote:before, blockquote:after,
+      q:before, q:after {
+        content: '';
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+    </style>
+
+    <style type="text/css">
+      /**
+      * https://github.com/csstools/sanitize.css/blob/master/typography.css
+      * Use the default user interface font in all browsers (opinionated).
+      */
+
+      html {
+        font-family: system-ui, /* macOS 10.11-10.12 */ -apple-system,
+          /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
+          /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
+          /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif,
+          /* macOS emoji */ "Apple Color Emoji",
+          /* Windows emoji */ "Segoe UI Emoji",
+          /* Windows emoji */ "Segoe UI Symbol",
+          /* Linux emoji */ "Noto Color Emoji";
+      }
+
+      /**
+      * https://github.com/csstools/sanitize.css/blob/master/forms.css
+      * 1. Use standards-like styling in all browsers (opinionated).
+      * 2. Inherit typography styling in all browsers (opinionated).
+      */
+
+      button,
+      input,
+      select,
+      textarea {
+        background-color: transparent; /* 1 */
+        border: 0 solid; /* 1 */
+        border-radius: 0.25em; /* 1 */
+        box-shadow: inset 0 0 0 1px WindowFrame; /* 1 */
+        color: inherit; /* 1 */
+        font-family: inherit; /* 2 */
+        font-size: inherit; /* 2 */
+        line-height: inherit; /* 2 */
+        padding: 0.25em 0.375em; /* 1 */
+      }
+    </style>
+
+    <style type="text/css">
+      #map {  height:550px; width:700px; margin: 10px; }
+      h1 {
+        font-size: 2em;
+        margin: 10px;
+      }
+      .controls {
+        margin: 10px;
+      }
+      button {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+      }
+      button.pause {
+        width: 120px;
+      }
+      /* #map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%; } */
+      /* #date { position: absolute; top: 10px; left: 10px; width: 100px; height: 20px; } */
+    </style>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <h1 id="date">2018-10-01</h1>
+    <div class="controls">
+      <button class="pause">Pause</button>
+    </div>
+    <div id="map"></div>
+  </body>
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+
+  <script>
+
+    // easiest data structure
+    // lookup by date, then by id... or do you just want the whole geojson foreach date
+
+    const baseURL = "http://localhost:8000/api/geoJSON/";
+    const startDate = new Date("2018-10-01");
+    const maxDate = new Date("2019-07-01");
+    let currentDate = new Date(startDate);
+
+    const delay = 1000;
+
+    function dateFormat(date) {
+      return date.toISOString().split('T')[0];
+    }
+
+    function getDataURL() {
+      return baseURL + dateFormat(currentDate) + "/";
+    }
+
+    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
+    mapboxgl.AnimationOptions = {
+      duration: 300,
+      easing: "linear"
+    };
+
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/light-v10",
+      transition: {
+        duration: 300,
+        delay: 0
+      },
+      center: [-105.552, 39.0311],
+      zoom: 6,
+      maxZoom: 10
+    });
+
+    //constrain to Colorado
+    map.setMaxBounds(map.getBounds());
+    // map.setMaxZoom(10);
+
+    map.on("load", () => {
+      map.addSource("snotel-snow", {
+        type: "geojson",
+        data: getDataURL(currentDate)
+      });
+
+      map.addLayer({
+        id: "snowfall",
+        type: "heatmap",
+        source: "snotel-snow",
+        paint: {
+          // Increase the heatmap weight based on snow magnitude
+          "heatmap-weight": [
+            "interpolate",
+            ["linear"],
+            ["get", "snow"],
+            0, 0,
+            115, 1
+          ],
+          // Increase the heatmap color weight weight by zoom level
+          // heatmap-intensity is a multiplier on top of heatmap-weight
+          "heatmap-intensity": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0, 1,
+            9, 3
+          ],
+          // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+          // Begin color ramp at 0-stop with a 0-transparancy color
+          // to create a blur-like effect.
+          // "heatmap-color": [
+          //   "interpolate",
+          //   ["linear"],
+          //   ["heatmap-density"],
+          //   0, "rgba(33,102,172,0)",
+          //   0.2, "rgb(103,169,207)",
+          //   0.4, "rgb(209,229,240)",
+          //   0.6, "rgb(253,219,199)",
+          //   0.8, "rgb(239,138,98)",
+          //   1, "rgb(178,24,43)"
+          // ],
+          "heatmap-color": [
+            "interpolate",
+            ["linear"],
+            ["heatmap-density"],
+            0.0, "rgba(33,102,172,0)",
+            0.2, "#81A1C1",
+            0.4, "rgb(209,229,240)",
+            0.6, "#fff",
+            1.0, "#B48EAD",
+            // 1.0, "rgb(33,102,172)"
+          ],
+          // "heatmap-opacity": .4,
+          // Adjust the heatmap radius by zoom level
+          "heatmap-radius": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            0, 2,
+            // 4, 10,
+            6, 35,
+            9, 200
+          ],
+        }
+      }, "waterway-label");
+      
+      map.addLayer({
+        id: "snotel-sites",
+        type: "symbol",
+        source: "snotel-snow",
+        layout: {
+          "icon-image": "monument-15",
+          "text-field": "{name}",
+          "text-size": 8,
+          "text-offset": [0, 1],
+          "text-anchor  ": "top"
+        }
+      });
+
+      let isPaused = false;
+      function updateSnow() {
+        if (currentDate < maxDate) {
+          currentDate.setDate(currentDate.getDate()+1);
+        }
+        else {
+          currentDate = new Date(startDate);
+        }
+
+        // is this too lazy?  lots of room to improve perf over this approach
+        map.getSource("snotel-snow").setData(getDataURL());
+
+        map.once("data", (e) => {
+          document.getElementById("date").innerHTML = dateFormat(currentDate);
+
+          // debugger;
+          let f = map.queryRenderedFeatures(
+            { layers: ["snotel-sites"] }
+          );
+
+          console.log(f.length, f[0]);
+
+          if (!isPaused) {
+            setTimeout(updateSnow, delay);
+          }
+        });
+      }
+
+      setTimeout(updateSnow, delay);
+
+      document.querySelector("button").addEventListener("click", (event) => {
+        if (isPaused) {
+          isPaused = false;
+          event.srcElement.innerHTML = "Pause";
+          updateSnow();
+        }
+        else {
+          event.srcElement.innerHTML = "Resume";
+          isPaused = true;
+        }
+      });
+
+
+    });
+  </script>
+
+
+</html>

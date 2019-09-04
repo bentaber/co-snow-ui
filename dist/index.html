@@ -3,327 +3,77 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>CO Snow :: 2018-19 Winter in Review</title>
-
-    <style type="text/css">
-      /* http://meyerweb.com/eric/tools/css/reset/ 
-        v2.0 | 20110126
-        License: none (public domain)
-      */
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed, 
-      figure, figcaption, footer, header, hgroup, 
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-      }
-      /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure, 
-      footer, header, hgroup, menu, nav, section {
-        display: block;
-      }
-      body {
-        line-height: 1;
-      }
-      ol, ul {
-        list-style: none;
-      }
-      blockquote, q {
-        quotes: none;
-      }
-      blockquote:before, blockquote:after,
-      q:before, q:after {
-        content: '';
-        content: none;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-    </style>
-
-    <style type="text/css">
-      /**
-      * https://github.com/csstools/sanitize.css/blob/master/typography.css
-      * Use the default user interface font in all browsers (opinionated).
-      */
-
-      html {
-        font-family: system-ui, /* macOS 10.11-10.12 */ -apple-system,
-          /* Windows 6+ */ Segoe UI, /* Android 4+ */ Roboto,
-          /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
-          /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif,
-          /* macOS emoji */ "Apple Color Emoji",
-          /* Windows emoji */ "Segoe UI Emoji",
-          /* Windows emoji */ "Segoe UI Symbol",
-          /* Linux emoji */ "Noto Color Emoji";
-      }
-
-      /**
-      * https://github.com/csstools/sanitize.css/blob/master/forms.css
-      * 1. Use standards-like styling in all browsers (opinionated).
-      * 2. Inherit typography styling in all browsers (opinionated).
-      */
-
-      button,
-      input,
-      select,
-      textarea {
-        background-color: transparent; /* 1 */
-        border: 0 solid; /* 1 */
-        border-radius: 0.25em; /* 1 */
-        box-shadow: inset 0 0 0 1px WindowFrame; /* 1 */
-        color: inherit; /* 1 */
-        font-family: inherit; /* 2 */
-        font-size: inherit; /* 2 */
-        line-height: inherit; /* 2 */
-        padding: 0.25em 0.375em; /* 1 */
-      }
-    </style>
-
-    <style type="text/css">
-      #map {  height:550px; width:100%; max-width: 700px; margin: 10px 0; }
-      h1 {
-        font-size: 2em;
-        margin: 10px;
-      }
-      .controls {
-        margin: 10px;
-      }
-      button {
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
-      }
-      button.pause {
-        width: 120px;
-      }
-      pre {
-        white-space: pre;
-        font-family: monospace;
-      }
-      /* #map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100%; } */
-      /* #date { position: absolute; top: 10px; left: 10px; width: 100px; height: 20px; } */
-    </style>
-
+    <title>Colorado Snow Depth - Winter in Review (2018-19)</title>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"" rel="stylesheet">
+    <link href="/assets/styles/main.css"" rel="stylesheet">
   </head>
 
   <body>
-    <h1 id="date">Oct 01 2018</h1>
-    <div class="controls">
-      <button class="pause">Pause</button>
-    </div>
-    <div id="map"></div>
-    <pre id="data"></pre>
+    <section class="header">
+      <h1>Colorado Snow Depth</h1>
+      <h2>Winter in Review (2018-19)</h2>
+    </section>
+
+    <section class="main">
+      <p>Daily snow depth (in inches) across the state of Colorado as measured at 200+ individual locations between October 1, 2018 and July 1, 2019.  Data courtesy of NRCS National Water and Climate center's <a href="https://www.wcc.nrcs.usda.gov/snow/">Snow Telemetry (SNOTEL)</a> and Snow Course Data and Products.</p>
+      
+      <div id="map-container" v-cloak>
+        <play-controls 
+          v-bind:date="date"
+          v-on:play="play"
+          v-on:pause="pause"
+          v-on:swap-colors="swapColors"
+        ></play-controls>
+        <div id="map"></div>
+        <h3>Snowiest Sites</h3>
+        <p class="instructions">
+          <i class="material-icons-round">info</i>
+          Zoom and pan map to filter data to specific regions.
+        </p>
+
+        <data-table 
+          v-bind:date="date"
+          v-bind:sites="sites"
+        ></data-table>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>About</h2>
+      <p>Built for fun to play with some new datasets and technologies.</p>
+      <ul>
+        <li>All data sourced from <a href="https://www.wcc.nrcs.usda.gov/snow/">SNOTEL</a> reports.</li>
+        <li>Server API application built in PHP 7 using <a href="https://lumen.laravel.com/">Laravel Lumen</a> framework.</li>
+        <li>Mapping provided via the <a href="https://docs.mapbox.com/mapbox-gl-js/api/">Mapbox</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a> API.</li>
+        <li>Snow depth APIs return data in <a href="https://tools.ietf.org/html/rfc7946">GeoJSON</a> format in order to play nicely with the Mapbox API.</li>
+        <li>Data stored in PostgreSQL.</li>
+        <li>Client side application utilizing <a href="https://vuejs.org/">Vue.js</a> for interaction and reactivity.</li>
+        <li>Static front end hosted via netlify, Postgres database at AWS, API application at Heroku, all fronted by Cloudflare.</li>
+      </ul>
+      <h4>Source Code</h4>
+      <ul>
+        <li>Server app</li>
+        <li>Client side app</li>
+      </ul>
+    </section>
+    <section class="footer">
+      <p>&copy; <a href="https://github.com/bentaber">Ben Taber</a>, 2019</p>
+    </section>
   </body>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="/assets/scripts/data-table.vue.js"></script>
+  <script src="/assets/scripts/play-controls.vue.js"></script>
+  <script src="/assets/scripts/map.js"></script>
 
   <script>
-
-    // easiest data structure
-    // lookup by date, then by id... or do you just want the whole geojson foreach date
-
-    const baseURL = "http://192.168.1.6:8000/api/geoJSON/";
-    const startDate = new Date("2018-10-01");
-    const maxDate = new Date("2019-07-01");
-    
-    let currentDate = new Date(startDate);
-    const elData = document.getElementById("data");
-    const elDate = document.getElementById("date");
-    const delay = 500;
-
-    function dateFormat(date, type) {
-      if ("display" == type) {
-        let d = new Date(date);
-        d.setMinutes(date.getMinutes()+date.getTimezoneOffset());
-        return d.toDateString().substr(4);
-      }
-      else {
-        // YYYY-MM-DD
-        return date.toISOString().split("T")[0];
-      }
-    }
-
-    function getDataURL() {
-      return baseURL + dateFormat(currentDate) + "/";
-    }
-
-    mapboxgl.accessToken = "pk.eyJ1IjoiYmVudGFiZXIiLCJhIjoiY2p6eW1qOXpxMDFjYTNpcXJ3dWs1aGw3ciJ9.Xms8pWL850Eb801rr2BImg";
-   
-    const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/light-v10",
-      center: [-105.552, 39.0311],
-      zoom: 6,
-      minZoom: 5.5,
-      maxZoom: 12
-    });
-
-    let isPaused = false;
-    let timeoutId = null;
-    
-    function nextSnow() {
-      if (isPaused) {
-        return;
-      }
-
-      console.log('next snow', timeoutId);
-      
-      timeoutId = setTimeout(() => {
-        if (currentDate < maxDate) {
-          currentDate.setDate(currentDate.getDate()+1);
-        }
-        else {
-          currentDate = new Date(startDate);
-        }
-
-        // is this too lazy?  lots of room to improve performance over this approach
-        map.getSource("snotel-snow").setData(getDataURL());
-        map.once("sourcedata", () => {
-          updateDate();
-          updateTable();
-          nextSnow();
-        });
-        
-      }, delay);
-    }
-
-    function updateTable() {
-      // let rendered = sites.sort(
-      //   function(a,b) {
-      //     return b.properties.snow - a.properties.snow;
-      //   })
-
-      const sites = map.queryRenderedFeatures(
-        { layers: ["snotel-sites"] }
-      );
-      
-      let rendered = sites.map(site => {
-          let prop = site.properties;
-
-          return [
-            prop.stationId,
-            prop.name,
-            prop.county,
-            prop.elevation,
-            prop.snow
-          ].join("\t\t");
-        }
-      );
-
-      rendered.unshift(["Station Id", "Station Name", "County", "Elevation", "Snow Depth (in)"].join("\t\t"));
-      elData.innerHTML = rendered.join("\n");
-    }
-
-    function updateDate() {
-      elDate.innerHTML = dateFormat(currentDate, "display");
-    }
-    
-    
-    document.querySelector("button").addEventListener("click", (event) => {
-      if (isPaused) {
-        isPaused = false;
-        event.srcElement.innerHTML = "Pause";
-        nextSnow();
-      }
-      else {
-        clearTimeout(timeoutId);
-        event.srcElement.innerHTML = "Resume";
-        isPaused = true;
-      }
-    });
-    
-    //constrain to Colorado
-    // map.setMaxBounds(map.getBounds());
-
-    map.on("load", () => {
-      map.addSource("snotel-snow", {
-        type: "geojson",
-        data: getDataURL(currentDate)
-      });
-
-      map.addLayer({
-        id: "snowfall",
-        type: "heatmap",
-        source: "snotel-snow",
-        paint: {
-          // Increase the heatmap weight based on snow magnitude
-          "heatmap-weight": [
-            "interpolate",
-            ["linear"],
-            ["get", "snow"],
-            0, 0,
-            115, 1
-          ],
-          // Increase the heatmap color weight weight by zoom level
-          // heatmap-intensity is a multiplier on top of heatmap-weight
-          "heatmap-intensity": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            0, 1,
-            9, 3
-          ],
-          // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
-          // Begin color ramp at 0-stop with a 0-transparancy color
-          // to create a blur-like effect.
-          "heatmap-color": [
-            "interpolate",
-            ["linear"],
-            ["heatmap-density"],
-            0.0, "rgba(33,102,172,0)",
-            0.2, "#81A1C1",
-            0.4, "rgb(209,229,240)",
-            0.6, "#fff",
-            1.0, "#B48EAD",
-            // 1.0, "rgb(33,102,172)"
-          ],
-          "heatmap-opacity": .75,
-          // Adjust the heatmap radius by zoom level
-          "heatmap-radius": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            0, 2,
-            6, 35,
-            9, 200
-          ],
-        }
-      }, "waterway-label");
-      
-      map.addLayer({
-        id: "snotel-sites",
-        type: "symbol",
-        source: "snotel-snow",
-        layout: {
-          "icon-image": "mountain-15",
-          "text-field": "{name}",
-          "text-size": 11,
-          "text-offset": [0, 1],
-          "text-anchor": "top"
-        }
-      });
-
-      map.on("zoomend", updateTable);
-      map.on("moveend", updateTable);
-      map.once("sourcedata", nextSnow);
-    });
+    map(
+      document.getElementById("map-container"),
+      "http://192.168.1.6:8000/api/geoJSON/"
+    );
   </script>
 
 

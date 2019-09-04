@@ -48,7 +48,7 @@
         <li>Server API application built in PHP 7 using <a href="https://lumen.laravel.com/">Laravel Lumen</a> framework.</li>
         <li>Mapping provided via the <a href="https://docs.mapbox.com/mapbox-gl-js/api/">Mapbox</a> <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API">WebGL</a> API.</li>
         <li>Snow depth APIs return data in <a href="https://tools.ietf.org/html/rfc7946">GeoJSON</a> format in order to play nicely with the Mapbox API.</li>
-        <li>Data stored in PostgreSQL.</li>
+        <li>Data stored in <a href="https://www.postgresql.org/">PostgreSQL</a>.</li>
         <li>Client side application utilizing <a href="https://vuejs.org/">Vue.js</a> for interaction and reactivity.</li>
         <li>Static front end hosted via netlify, Postgres database and API application running at Heroku, all fronted by Cloudflare.</li>
       </ul>
@@ -72,7 +72,7 @@
   <script>
     map(
       document.getElementById("map-container"),
-      "http://192.168.1.6:8000/api/geoJSON/"
+      "https://api-cosnow.bentaber.com/api/geoJSON/"
     );
   </script>
 

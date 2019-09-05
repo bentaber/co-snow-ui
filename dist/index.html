@@ -42,7 +42,7 @@
 
     <section class="about">
       <h2>About</h2>
-      <p>Built for fun to play with some new datasets and technologies.</p>
+      <p>Built for fun and to play with some new datasets and technologies.</p>
       <ul>
         <li>All data sourced from <a href="https://www.wcc.nrcs.usda.gov/snow/">SNOTEL</a> reports.</li>
         <li>Server API application built in PHP 7 using <a href="https://lumen.laravel.com/">Laravel Lumen</a> framework.</li>
@@ -50,12 +50,18 @@
         <li>Snow depth APIs return data in <a href="https://tools.ietf.org/html/rfc7946">GeoJSON</a> format in order to play nicely with the Mapbox API.</li>
         <li>Data stored in <a href="https://www.postgresql.org/">PostgreSQL</a>.</li>
         <li>Client side application utilizing <a href="https://vuejs.org/">Vue.js</a> for interaction and reactivity.</li>
-        <li>Static front end hosted via netlify, Postgres database and API application running at Heroku, all fronted by Cloudflare.</li>
+        <li>Iconography from <a href="https://labs.mapbox.com/maki-icons/">Maki icons</a> and <a href="https://material.io/resources/icons/">Material Design</a>, and color scheme credit to <a href="https://www.nordtheme.com/docs/colors-and-palettes">Nord</a>.</li>
+        <li>Static front end hosted via <a href="https://www.netlify.com/">netlify</a>, Postgres database and Lumen API application running at <a href="https://www.heroku.com/">Heroku</a>, all fronted by <a href="https://www.cloudflare.com">Cloudflare</a> for content delivery and caching.</li>
       </ul>
-      <h4>Source Code</h4>
+      <h4>Source code</h4>
       <ul>
         <li>API app <a href="https://github.com/bentaber/co-snow-api">github.com/bentaber/co-snow-api</a></li>
         <li>Client side <a href="https://github.com/bentaber/co-snow-ui">github.com/bentaber/co-snow-ui</a></li>
+      </ul>
+      <h4>Raw data</h4>
+      <ul>
+        <li>Colorado based SNOTEL sites meta data [<a href="assets/data/snotel-co-meta.csv">csv</a>]</li>
+        <li>Winter 2018-19 snow depth data for Colorado based SNOTEL sites [<a href="assets/data/winter-18-19-snotel-co.csv">csv</a>]</li>
       </ul>
     </section>
     <section class="footer">

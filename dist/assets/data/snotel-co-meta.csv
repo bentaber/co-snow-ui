@@ -1,0 +1,467 @@
+#------------------------------------------------- WARNING --------------------------------------------
+# 
+# The data you have obtained from this automated Natural Resources Conservation Service 
+# database are subject to revision regardless of indicated Quality Assurance level. 
+# Data are released on condition that neither the NRCS nor the United States Government 
+# may be held liable for any damages resulting from its use. 
+# 
+# Help and Tutorials: https://www.nrcs.usda.gov/wps/portal/wcc/home/dataAccessHelp/helpCenters/!ut/p/
+# 
+# Support Contact: usdafpacbc@midatl.service-now.com
+# 
+#------------------------------------------------------------------------------------------------------
+# 
+# Reporting Frequency: Daily
+# Date Range: 2019-09-03
+#
+# Data for the following site(s) are contained in this file:
+#
+#	SNOW COURSE/AERIAL MARKER 05L05: Antero, CO
+#	SNOW COURSE/AERIAL MARKER 05L06: Antero Reservoir, CO
+#	SNOTEL 303: Apishapa, CO
+#	SNOTEL 1030: Arapaho Ridge, CO
+#	SNOW COURSE/AERIAL MARKER 05K23: Baltimore, CO
+#	SNOTEL 322: Bear Lake, CO
+#	SNOTEL 1061: Bear River, CO
+#	SNOTEL 327: Beartown, CO
+#	SNOTEL 1041: Beaver Ck Village, CO
+#	SNOW COURSE/AERIAL MARKER 05J33: Bennett Creek, CO
+#	SNOW COURSE/AERIAL MARKER 05K13: Berthoud Falls, CO
+#	SNOW COURSE/AERIAL MARKER 05K03: Berthoud Pass, CO
+#	SNOTEL 335: Berthoud Summit, CO
+#	SNOW COURSE/AERIAL MARKER 05J03: Big South, CO
+#	SNOTEL 345: Bison Lake, CO
+#	SNOTEL 1185: Black Mesa, CO
+#	SNOTEL 1161: Black Mountain, CO
+#	SNOW COURSE/AERIAL MARKER 06K21: Blue River, CO
+#	SNOW COURSE/AERIAL MARKER 05J25: Boulder Falls, CO
+#	SNOW COURSE/AERIAL MARKER 05M04: Brown Cabin, CO
+#	SNOTEL 369: Brumley, CO
+#	SNOTEL 938: Buckskin Joe, CO
+#	SNOTEL 913: Buffalo Park, CO
+#	SNOTEL 378: Burro Mountain, CO
+#	SNOTEL 380: Butte, CO
+#	SNOW COURSE/AERIAL MARKER 06J37: Butterhill, CO
+#	SNOW COURSE/AERIAL MARKER 05J01: Cameron Pass, CO
+#	SNOTEL 386: Cascade, CO
+#	SNOTEL 387: Cascade #2, CO
+#	SNOW COURSE/AERIAL MARKER 05J02: Chambers Lake, CO
+#	SNOTEL 1101: Chapman Tunnel, CO
+#	SNOTEL 1059: Cochetopa Pass, CO
+#	SNOW COURSE/AERIAL MARKER 06L06: Cochetopa Pass, CO
+#	SNOTEL 408: Columbine, CO
+#	SNOW COURSE/AERIAL MARKER 06K47: Columbine Ditch, CO
+#	SNOW COURSE/AERIAL MARKER 06J03: Columbine Lodge, CO
+#	SNOTEL 409: Columbine Pass, CO
+#	SNOTEL 904: Columbus Basin, CO
+#	SNOW COURSE/AERIAL MARKER 05K25: Como, CO
+#	SNOW COURSE/AERIAL MARKER 05J18: Copeland Lake, CO
+#	SNOTEL 412: Copeland Lake, CO
+#	SNOTEL 415: Copper Mountain, CO
+#	SNOW COURSE/AERIAL MARKER 06J17: Corral Creek, CO
+#	SNOW COURSE/AERIAL MARKER 07L01: Crested Butte, CO
+#	SNOTEL 426: Crosho, CO
+#	SNOW COURSE/AERIAL MARKER 05M12: Cucharas Creek, CO
+#	SNOTEL 430: Culebra #2, CO
+#	SNOW COURSE/AERIAL MARKER 06M07: Cumbres Pass, CO
+#	SNOTEL 431: Cumbres Trestle, CO
+#	SNOTEL 438: Deadman Hill, CO
+#	SNOW COURSE/AERIAL MARKER 05J06: Deadman Hill, CO
+#	SNOW COURSE/AERIAL MARKER 05J17: Deer Ridge, CO
+#	SNOTEL 457: Dry Lake, CO
+#	SNOTEL 936: Echo Lake, CO
+#	SNOTEL 465: El Diente Peak, CO
+#	SNOW COURSE/AERIAL MARKER 05L07: Eleven Mile, CO
+#	SNOTEL 467: Elk River, CO
+#	SNOTEL 1252: Elkhead Divide, CO
+#	SNOTEL 1120: Elliot Ridge, CO
+#	SNOW COURSE/AERIAL MARKER 05K29: Empire #2, CO
+#	SNOW COURSE/AERIAL MARKER 06K48: Ewing Upper, CO
+#	SNOTEL 1186: Fool Creek, CO
+#	SNOTEL 485: Fremont Pass, CO
+#	SNOW COURSE/AERIAL MARKER 05K11: Geneva Park, CO
+#	SNOTEL 1057: Glen Cove, CO
+#	SNOW COURSE/AERIAL MARKER 06J11: Gore Pass, CO
+#	SNOW COURSE/AERIAL MARKER 05J16: Granby, CO
+#	SNOW COURSE/AERIAL MARKER 06M21: Grayback, CO
+#	SNOTEL 1058: Grayback, CO
+#	SNOTEL 505: Grizzly Peak, CO
+#	SNOW COURSE/AERIAL MARKER 08M03: Groundhog, CO
+#	SNOW COURSE/AERIAL MARKER 06K42: Hagerman Tunnel, CO
+#	SNOTEL 1102: Hayden Pass, CO
+#	SNOW COURSE/AERIAL MARKER 05J13: Hidden Valley, CO
+#	SNOTEL 1187: High Lonesome, CO
+#	SNOTEL 531: Hoosier Pass, CO
+#	SNOW COURSE/AERIAL MARKER 06K35: Horseshoe Mountain, CO
+#	SNOW COURSE/AERIAL MARKER 05J11: Hourglass Lake, CO
+#	SNOTEL 1122: Hourglass Lake, CO
+#	SNOTEL 538: Idarado, CO
+#	SNOTEL 542: Independence Pass, CO
+#	SNOW COURSE/AERIAL MARKER 06K04: Independence Pass, CO
+#	SNOW COURSE/AERIAL MARKER 07M06: Ironton Park, CO
+#	SNOTEL 547: Ivanhoe, CO
+#	SNOTEL 935: Jackwhacker Gulch, CO
+#	SNOTEL 551: Joe Wright, CO
+#	SNOW COURSE/AERIAL MARKER 05K21: Jones Pass, CO
+#	SNOTEL 970: Jones Pass, CO
+#	SNOW COURSE/AERIAL MARKER 07L04: Keystone, CO
+#	SNOTEL 556: Kiln, CO
+#	SNOW COURSE/AERIAL MARKER 05M01: La Veta Pass, CO
+#	SNOW COURSE/AERIAL MARKER 07M08: Lake City, CO
+#	SNOTEL 564: Lake Eldora, CO
+#	SNOTEL 565: Lake Irene, CO
+#	SNOW COURSE/AERIAL MARKER 05J10: Lake Irene, CO
+#	SNOW COURSE/AERIAL MARKER 05K07: Lapland, CO
+#	SNOW COURSE/AERIAL MARKER 05J44: Left Hand, CO
+#	SNOW COURSE/AERIAL MARKER 07M23: Lemon Reservoir, CO
+#	SNOTEL 580: Lily Pond, CO
+#	SNOTEL 586: Lizard Head Pass, CO
+#	SNOTEL 589: Lone Cone, CO
+#	SNOW COURSE/AERIAL MARKER 05J27: Long Draw Reservoir, CO
+#	SNOTEL 1123: Long Draw Resv, CO
+#	SNOW COURSE/AERIAL MARKER 05J22: Longs Peak, CO
+#	SNOTEL 940: Lost Dog, CO
+#	SNOW COURSE/AERIAL MARKER 06K49: Lostman, CO
+#	SNOW COURSE/AERIAL MARKER 07M10: Love Lake, CO
+#	SNOTEL 602: Loveland Basin, CO
+#	SNOTEL 607: Lynx Pass, CO
+#	SNOTEL 905: Mancos, CO
+#	SNOTEL 618: Mc Clure Pass, CO
+#	SNOW COURSE/AERIAL MARKER 05J15: Mc Intyre, CO
+#	SNOW COURSE/AERIAL MARKER 06K28: Mc Kenzie Gulch, CO
+#	SNOTEL 1040: Mccoy Park, CO
+#	SNOTEL 914: Medano Pass, CO
+#	SNOTEL 622: Mesa Lakes, CO
+#	SNOW COURSE/AERIAL MARKER 08K04: Mesa Lakes, CO
+#	SNOTEL 937: Michigan Creek, CO
+#	SNOTEL 624: Middle Creek, CO
+#	SNOTEL 1014: Middle Fork Camp, CO
+#	SNOW COURSE/AERIAL MARKER 06K12: Middle Fork Campground, CO
+#	SNOW COURSE/AERIAL MARKER 05J24: Milner Pass, CO
+#	SNOTEL 629: Mineral Creek, CO
+#	SNOTEL 632: Molas Lake, CO
+#	SNOW COURSE/AERIAL MARKER 06L09: Monarch Offshoot, CO
+#	SNOTEL 1124: Moon Pass, CO
+#	SNOW COURSE/AERIAL MARKER 06K34: Mosquito Creek, CO
+#	SNOW COURSE/AERIAL MARKER 06K06: Nast Lake, CO
+#	SNOTEL 658: Nast Lake, CO
+#	SNOTEL 1031: Never Summer, CO
+#	SNOTEL 663: Niwot, CO
+#	SNOW COURSE/AERIAL MARKER 05J09: North Inlet Grand Lake, CO
+#	SNOTEL 669: North Lost Trail, CO
+#	SNOW COURSE/AERIAL MARKER 08M09: North Mountain, CO
+#	SNOTEL 675: Overland Res., CO
+#	SNOTEL 680: Park Cone, CO
+#	SNOW COURSE/AERIAL MARKER 06L02: Park Cone, CO
+#	SNOTEL 682: Park Reservoir, CO
+#	SNOW COURSE/AERIAL MARKER 06J02: Park View, CO
+#	SNOTEL 688: Phantom Valley, CO
+#	SNOW COURSE/AERIAL MARKER 06M24: Pinos Mill, CO
+#	SNOW COURSE/AERIAL MARKER 06M09: Platoro, CO
+#	SNOW COURSE/AERIAL MARKER 06M14: Pool Table Mountain, CO
+#	SNOW COURSE/AERIAL MARKER 07M20: Porcupine, CO
+#	SNOW COURSE/AERIAL MARKER 06L03: Porphyry Creek, CO
+#	SNOTEL 701: Porphyry Creek, CO
+#	SNOTEL 709: Rabbit Ears, CO
+#	SNOW COURSE/AERIAL MARKER 05K18: Ranch Creek, CO
+#	SNOTEL 1032: Rawah, CO
+#	SNOW COURSE/AERIAL MARKER 05J20: Red Feather, CO
+#	SNOTEL 713: Red Mountain Pass, CO
+#	SNOW COURSE/AERIAL MARKER 07J01: Rio Blanco, CO
+#	SNOTEL 717: Ripple Creek, CO
+#	SNOTEL 718: Roach, CO
+#	SNOTEL 939: Rough And Tumble, CO
+#	SNOTEL 1100: Saint Elmo, CO
+#	SNOW COURSE/AERIAL MARKER 06L05: Saint Elmo, CO
+#	SNOW COURSE/AERIAL MARKER 07M17: Santa Maria, CO
+#	SNOTEL 1128: Sargents Mesa, CO
+#	SNOW COURSE/AERIAL MARKER 05J45: Sawtooth, CO
+#	SNOTEL 1251: Sawtooth, CO
+#	SNOTEL 737: Schofield Pass, CO
+#	SNOTEL 739: Scotch Creek, CO
+#	SNOTEL 1060: Sharkstooth, CO
+#	SNOW COURSE/AERIAL MARKER 06K09: Shrine Pass, CO
+#	SNOW COURSE/AERIAL MARKER 06M04: Silver Lakes, CO
+#	SNOTEL 762: Slumgullion, CO
+#	SNOW COURSE/AERIAL MARKER 05K16: Snake River, CO
+#	SNOTEL 773: South Colony, CO
+#	SNOTEL 780: Spud Mountain, CO
+#	SNOTEL 793: Stillwater Creek, CO
+#	SNOTEL 797: Stump Lakes, CO
+#	SNOTEL 802: Summit Ranch, CO
+#	SNOW COURSE/AERIAL MARKER 05K22: Sundance, CO
+#	SNOW COURSE/AERIAL MARKER 07M02: Telluride, CO
+#	SNOW COURSE/AERIAL MARKER 06K25: Tennessee Pass #2, CO
+#	SNOTEL 825: Tower, CO
+#	SNOLITE 1283: Trail Creek, CO
+#	SNOTEL 827: Trapper Lake, CO
+#	SNOTEL 829: Trinchera, CO
+#	SNOW COURSE/AERIAL MARKER 06L12: Trout Creek Pass, CO
+#	SNOW COURSE/AERIAL MARKER 07M28: Trout Lake #2, CO
+#	SNOW COURSE/AERIAL MARKER 06K03: Twin Lakes Tunnel, CO
+#	SNOW COURSE/AERIAL MARKER 05J08: University Camp, CO
+#	SNOTEL 838: University Camp, CO
+#	SNOTEL 839: Upper Rio Grande, CO
+#	SNOTEL 840: Upper San Juan, CO
+#	SNOW COURSE/AERIAL MARKER 06M03: Upper San Juan, CO
+#	SNOTEL 1141: Upper Taylor, CO
+#	SNOTEL 1005: Ute Creek, CO
+#	SNOW COURSE/AERIAL MARKER 05M17: Ute Creek, CO
+#	SNOTEL 842: Vail Mountain, CO
+#	SNOTEL 843: Vallecito, CO
+#	SNOW COURSE/AERIAL MARKER 05K19: Vasquez, CO
+#	SNOTEL 1188: Wager Gulch, CO
+#	SNOTEL 1160: Weminuche Creek, CO
+#	SNOW COURSE/AERIAL MARKER 06K26: Weston, CO
+#	SNOTEL 857: Whiskey Ck, CO
+#	SNOW COURSE/AERIAL MARKER 05J05: Wild Basin, CO
+#	SNOTEL 1042: Wild Basin, CO
+#	SNOW COURSE/AERIAL MARKER 06J05: Willow Creek Pass, CO
+#	SNOTEL 869: Willow Creek Pass, CO
+#	SNOTEL 870: Willow Park, CO
+#	SNOW COURSE/AERIAL MARKER 06K50: Winfield Middle, CO
+#	SNOTEL 874: Wolf Creek Summit, CO
+#	SNOW COURSE/AERIAL MARKER 06K51: Wurtz Lower, CO
+#	SNOW COURSE/AERIAL MARKER 06K52: Wurtz Middle, CO
+#	SNOW COURSE/AERIAL MARKER 06J10: Yampa View, CO
+#	SNOTEL 1033: Zirkel, CO
+# 
+# Data items provided in this file:
+#
+# Element Name  Value Type  Function Type  Function Duration  Base Data  Measurement Units  Sensor Depth  Element Code  Description  
+# 
+# Quality Control flags included:
+#
+# Flag    Name                Description
+#  V      Valid               Validated Data
+#  N      No Profile          No profile for automated validation
+#  E      Edit                Edit, minor adjustment for sensor noise
+#  B      Back Estimate       Regression-based estimate for homogenizing collocated Snow Course and Snow Pillow data sets
+#  K      Estimate            Estimate
+#  X      External Estimate   External estimate
+#  S      Suspect             Suspect data
+# 
+# Quality Assurance flags included:
+#
+# Flag    Name                Description
+#  U      Unknown             Unknown
+#  R      Raw                 No Human Review
+#  P      Provisional         Preliminary Human Review
+#  A      Approved            Processing and Final Review Completed
+# 
+#------------------------------------------------------------------------------------------------------
+# 
+# Metadata Report
+#
+# As of: Sep 3, 2019 10:30:44 AM GMT-08:00
+#
+Station Name,Station Id,Latitude,Longitude,County Name,State Code,Elevation,Network Code
+Antero,05L05,38.91667,-105.96667,Park,CO,9300,SNOW
+Antero Reservoir,05L06,39.00000,-105.88333,Park,CO,9000,SNOW
+Apishapa,303,37.33062,-105.06749,Huerfano,CO,10000,SNTL
+Arapaho Ridge,1030,40.35098,-106.38142,Grand,CO,10960,SNTL
+Baltimore,05K23,39.90000,-105.58333,Gilpin,CO,8800,SNOW
+Bear Lake,322,40.31118,-105.64483,Larimer,CO,9500,SNTL
+Bear River,1061,40.06153,-107.00955,Routt,CO,9080,SNTL
+Beartown,327,37.71409,-107.51212,Mineral,CO,11600,SNTL
+Beaver Ck Village,1041,39.59917,-106.51142,Eagle,CO,8500,SNTL
+Bennett Creek,05J33,40.66667,-105.61667,Larimer,CO,9200,SNOW
+Berthoud Falls,05K13,39.78333,-105.78333,Clear Creek,CO,10500,SNOW
+Berthoud Pass,05K03,39.83333,-105.75000,Grand,CO,9700,SNOW
+Berthoud Summit,335,39.80392,-105.77789,Grand,CO,11300,SNTL
+Big South,05J03,40.61667,-105.81667,Larimer,CO,8600,SNOW
+Bison Lake,345,39.76487,-107.35681,Garfield,CO,10880,SNTL
+Black Mesa,1185,37.78972,-108.18365,Dolores,CO,11580,SNTL
+Black Mountain,1161,40.88800,-105.66397,Larimer,CO,8920,SNTL
+Blue River,06K21,39.38333,-106.05000,Summit,CO,10500,SNOW
+Boulder Falls,05J25,40.01667,-105.56667,Boulder,CO,10000,SNOW
+Brown Cabin,05M04,37.55000,-105.40000,Costilla,CO,9600,SNOW
+Brumley,369,39.08766,-106.54170,Lake,CO,10600,SNTL
+Buckskin Joe,938,39.30350,-106.11307,Park,CO,11150,SNTL
+Buffalo Park,913,40.22861,-106.59528,Grand,CO,9240,SNTL
+Burro Mountain,378,39.87505,-107.59853,Rio Blanco,CO,9400,SNTL
+Butte,380,38.89433,-106.95300,Gunnison,CO,10160,SNTL
+Butterhill,06J37,40.93333,-106.98333,Routt,CO,7880,SNOW
+Cameron Pass,05J01,40.51667,-105.56667,Jackson,CO,10285,SNOW
+Cascade,386,37.65083,-107.80602,San Juan,CO,8880,SNTL
+Cascade #2,387,37.65800,-107.80268,San Juan,CO,8920,SNTL
+Chambers Lake,05J02,40.61667,-105.83333,Larimer,CO,9000,SNOW
+Chapman Tunnel,1101,39.26217,-106.62931,Pitkin,CO,10110,SNTL
+Cochetopa Pass,1059,38.16283,-106.59883,Saguache,CO,10020,SNTL
+Cochetopa Pass,06L06,38.16667,-106.60000,Saguache,CO,10000,SNOW
+Columbine,408,40.39480,-106.60408,Jackson,CO,9160,SNTL
+Columbine Ditch,06K47,39.37782,-106.24526,Eagle,CO,11576,SNOW
+Columbine Lodge,06J03,40.40000,-106.60000,Jackson,CO,9160,SNOW
+Columbine Pass,409,38.41795,-108.38249,Montrose,CO,9400,SNTL
+Columbus Basin,904,37.44147,-108.02445,La Plata,CO,10785,SNTL
+Como,05K25,39.35000,-105.91667,Park,CO,10370,SNOW
+Copeland Lake,05J18,40.20000,-105.56667,Boulder,CO,8600,SNOW
+Copeland Lake,412,40.20778,-105.56861,Boulder,CO,8600,SNTL
+Copper Mountain,415,39.48954,-106.17095,Summit,CO,10550,SNTL
+Corral Creek,06J17,40.15000,-106.15000,Grand,CO,9700,SNOW
+Crested Butte,07L01,38.88333,-107.00000,Gunnison,CO,8920,SNOW
+Crosho,426,40.16745,-107.05750,Rio Blanco,CO,9100,SNTL
+Cucharas Creek,05M12,37.33333,-105.08333,Huerfano,CO,9700,SNOW
+Culebra #2,430,37.20945,-105.19959,Costilla,CO,10500,SNTL
+Cumbres Pass,06M07,37.01667,-106.45000,Conejos,CO,10020,SNOW
+Cumbres Trestle,431,37.01878,-106.45179,Conejos,CO,10040,SNTL
+Deadman Hill,438,40.80571,-105.76993,Larimer,CO,10220,SNTL
+Deadman Hill,05J06,40.80000,-105.76667,Larimer,CO,10220,SNOW
+Deer Ridge,05J17,40.40000,-105.63333,Larimer,CO,9000,SNOW
+Dry Lake,457,40.53397,-106.78130,Routt,CO,8400,SNTL
+Echo Lake,936,39.65627,-105.59345,Clear Creek,CO,10600,SNTL
+El Diente Peak,465,37.78617,-108.02155,Dolores,CO,10000,SNTL
+Eleven Mile,05L07,38.95000,-105.53333,Park,CO,8590,SNOW
+Elk River,467,40.84781,-106.96871,Routt,CO,8700,SNTL
+Elkhead Divide,1252,40.79649,-107.10122,Routt,CO,8780,SNTL
+Elliot Ridge,1120,39.86400,-106.42460,Summit,CO,10520,SNTL
+Empire #2,05K29,39.76666,-105.78333,Clear Creek,CO,9680,SNOW
+Ewing Upper,06K48,39.36986,-106.27795,Eagle,CO,11270,SNOW
+Fool Creek,1186,39.86870,-105.86750,Grand,CO,11150,SNTL
+Fremont Pass,485,39.37991,-106.19681,Summit,CO,11400,SNTL
+Geneva Park,05K11,39.51667,-105.71667,Park,CO,9600,SNOW
+Glen Cove,1057,38.87583,-105.07367,Teller,CO,11460,SNTL
+Gore Pass,06J11,40.08333,-106.55000,Grand,CO,9400,SNOW
+Granby,05J16,40.15000,-106.00000,Grand,CO,8600,SNOW
+Grayback,06M21,37.46667,-106.53333,Rio Grande,CO,11600,SNOW
+Grayback,1058,37.47033,-106.53783,Rio Grande,CO,11620,SNTL
+Grizzly Peak,505,39.64631,-105.86973,Summit,CO,11100,SNTL
+Groundhog,08M03,37.80000,-108.26667,Dolores,CO,8940,SNOW
+Hagerman Tunnel,06K42,39.25000,-106.50000,Lake,CO,11150,SNOW
+Hayden Pass,1102,38.29326,-105.85050,Saguache,CO,10720,SNTL
+Hidden Valley,05J13,40.40000,-105.65000,Larimer,CO,9480,SNOW
+High Lonesome,1187,40.03592,-105.75471,Grand,CO,10620,SNTL
+Hoosier Pass,531,39.36127,-106.05978,Summit,CO,11400,SNTL
+Horseshoe Mountain,06K35,39.20000,-106.13333,Park,CO,11220,SNOW
+Hourglass Lake,05J11,40.58333,-105.63333,Larimer,CO,9360,SNOW
+Hourglass Lake,1122,40.57913,-105.63068,Larimer,CO,9380,SNTL
+Idarado,538,37.93390,-107.67552,Ouray,CO,9800,SNTL
+Independence Pass,542,39.07539,-106.61169,Pitkin,CO,10600,SNTL
+Independence Pass,06K04,39.06667,-106.61667,Pitkin,CO,10600,SNOW
+Ironton Park,07M06,37.96667,-107.66667,Ouray,CO,9600,SNOW
+Ivanhoe,547,39.29202,-106.54923,Pitkin,CO,10400,SNTL
+Jackwhacker Gulch,935,39.56667,-105.80000,Clear Creek,CO,10960,SNTL
+Joe Wright,551,40.53215,-105.88700,Larimer,CO,10120,SNTL
+Jones Pass,05K21,39.76667,-105.90000,Grand,CO,10400,SNOW
+Jones Pass,970,39.76450,-105.90623,Grand,CO,10400,SNTL
+Keystone,07L04,38.86667,-107.03333,Gunnison,CO,9960,SNOW
+Kiln,556,39.31724,-106.61453,Pitkin,CO,9600,SNTL
+La Veta Pass,05M01,37.60000,-105.20000,Costilla,CO,9440,SNOW
+Lake City,07M08,37.98333,-107.25000,Hinsdale,CO,10160,SNOW
+Lake Eldora,564,39.93678,-105.58956,Gilpin,CO,9700,SNTL
+Lake Irene,565,40.41432,-105.81980,Grand,CO,10700,SNTL
+Lake Irene,05J10,40.41667,-105.81667,Grand,CO,10700,SNOW
+Lapland,05K07,39.88837,-105.89031,Grand,CO,9300,SNOW
+Left Hand,05J44,40.07890,-105.52615,Boulder,CO,9900,SNOW
+Lemon Reservoir,07M23,37.45000,-107.66667,La Plata,CO,8700,SNOW
+Lily Pond,580,37.37929,-106.54835,Conejos,CO,11000,SNTL
+Lizard Head Pass,586,37.79926,-107.92426,Dolores,CO,10200,SNTL
+Lone Cone,589,37.89183,-108.19544,San Miguel,CO,9600,SNTL
+Long Draw Reservoir,05J27,40.51230,-105.76560,Larimer,CO,9980,SNOW
+Long Draw Resv,1123,40.51230,-105.76560,Larimer,CO,9980,SNTL
+Longs Peak,05J22,40.26667,-105.58333,Larimer,CO,10500,SNOW
+Lost Dog,940,40.81588,-106.74835,Routt,CO,9320,SNTL
+Lostman,06K49,39.12374,-106.62019,Pitkin,CO,10626,SNOW
+Love Lake,07M10,37.66667,-107.01667,Mineral,CO,10000,SNOW
+Loveland Basin,602,39.67433,-105.90133,Clear Creek,CO,11400,SNTL
+Lynx Pass,607,40.07806,-106.67028,Routt,CO,8880,SNTL
+Mancos,905,37.43087,-108.16954,Montezuma,CO,10000,SNTL
+Mc Clure Pass,618,39.12897,-107.28806,Pitkin,CO,9500,SNTL
+Mc Intyre,05J15,40.78333,-105.93333,Larimer,CO,9100,SNOW
+Mc Kenzie Gulch,06K28,39.50000,-106.75000,Eagle,CO,8500,SNOW
+Mccoy Park,1040,39.60468,-106.54128,Eagle,CO,9480,SNTL
+Medano Pass,914,37.85164,-105.43614,Saguache,CO,9649,SNTL
+Mesa Lakes,622,39.05831,-108.05835,Mesa,CO,10000,SNTL
+Mesa Lakes,08K04,39.05000,-108.08333,Mesa,CO,10000,SNOW
+Michigan Creek,937,39.43577,-105.91078,Park,CO,10600,SNTL
+Middle Creek,624,37.61978,-107.03482,Mineral,CO,11250,SNTL
+Middle Fork Camp,1014,39.79560,-106.02730,Grand,CO,8940,SNTL
+Middle Fork Campground,06K12,39.78333,-106.01667,Grand,CO,9000,SNOW
+Milner Pass,05J24,40.40000,-105.83333,Larimer,CO,9750,SNOW
+Mineral Creek,629,37.84747,-107.72657,San Juan,CO,10040,SNTL
+Molas Lake,632,37.74932,-107.68866,San Juan,CO,10500,SNTL
+Monarch Offshoot,06L09,38.51667,-106.33333,Chaffee,CO,10500,SNOW
+Moon Pass,1124,37.96661,-106.55837,Saguache,CO,11140,SNTL
+Mosquito Creek,06K34,39.28333,-106.13333,Park,CO,10980,SNOW
+Nast Lake,06K06,39.30000,-106.60000,Pitkin,CO,8700,SNOW
+Nast Lake,658,39.29722,-106.60694,Pitkin,CO,8700,SNTL
+Never Summer,1031,40.40405,-105.95583,Jackson,CO,10280,SNTL
+Niwot,663,40.03523,-105.54426,Boulder,CO,9910,SNTL
+North Inlet Grand Lake,05J09,40.28333,-105.76667,Grand,CO,9000,SNOW
+North Lost Trail,669,39.07813,-107.14389,Gunnison,CO,9200,SNTL
+North Mountain,08M09,37.93333,-108.40000,San Miguel,CO,9360,SNOW
+Overland Res.,675,39.09056,-107.63472,Delta,CO,9840,SNTL
+Park Cone,680,38.81996,-106.58974,Gunnison,CO,9600,SNTL
+Park Cone,06L02,38.81667,-106.58333,Gunnison,CO,9600,SNOW
+Park Reservoir,682,39.04644,-107.87414,Delta,CO,9960,SNTL
+Park View,06J02,40.36667,-106.10000,Jackson,CO,9160,SNOW
+Phantom Valley,688,40.39937,-105.84757,Grand,CO,9030,SNTL
+Pinos Mill,06M24,37.05000,-106.41667,Conejos,CO,10000,SNOW
+Platoro,06M09,37.35000,-106.55000,Conejos,CO,9880,SNOW
+Pool Table Mountain,06M14,37.80000,-106.80000,Mineral,CO,9840,SNOW
+Porcupine,07M20,37.85000,-107.16667,Hinsdale,CO,10280,SNOW
+Porphyry Creek,06L03,38.48333,-106.33333,Gunnison,CO,10760,SNOW
+Porphyry Creek,701,38.48884,-106.33965,Gunnison,CO,10760,SNTL
+Rabbit Ears,709,40.36783,-106.74038,Routt,CO,9400,SNTL
+Ranch Creek,05K18,39.93333,-105.73333,Grand,CO,9400,SNOW
+Rawah,1032,40.70750,-106.00760,Jackson,CO,9020,SNTL
+Red Feather,05J20,40.81666,-105.65000,Larimer,CO,9000,SNOW
+Red Mountain Pass,713,37.89180,-107.71342,San Juan,CO,11200,SNTL
+Rio Blanco,07J01,40.03333,-107.28333,Garfield,CO,8500,SNOW
+Ripple Creek,717,40.10812,-107.29411,Rio Blanco,CO,10340,SNTL
+Roach,718,40.87502,-106.04603,Larimer,CO,9700,SNTL
+Rough And Tumble,939,39.03333,-106.08333,Park,CO,10360,SNTL
+Saint Elmo,1100,38.69978,-106.36801,Chaffee,CO,10540,SNTL
+Saint Elmo,06L05,38.70000,-106.36667,Chaffee,CO,10400,SNOW
+Santa Maria,07M17,37.81667,-107.11667,Mineral,CO,9600,SNOW
+Sargents Mesa,1128,38.28555,-106.37069,Saguache,CO,11530,SNTL
+Sawtooth,05J45,40.13333,-105.58333,Boulder,CO,9740,SNOW
+Sawtooth,1251,40.13697,-105.58625,Boulder,CO,9620,SNTL
+Schofield Pass,737,39.01522,-107.04877,Gunnison,CO,10700,SNTL
+Scotch Creek,739,37.64556,-108.00786,Dolores,CO,9100,SNTL
+Sharkstooth,1060,37.50357,-108.11373,Montezuma,CO,10720,SNTL
+Shrine Pass,06K09,39.53333,-106.21667,Summit,CO,10700,SNOW
+Silver Lakes,06M04,37.38333,-106.40000,Conejos,CO,9500,SNOW
+Slumgullion,762,37.99080,-107.20327,Hinsdale,CO,11560,SNTL
+Snake River,05K16,39.63333,-105.90000,Summit,CO,10000,SNOW
+South Colony,773,37.96811,-105.53787,Custer,CO,10800,SNTL
+Spud Mountain,780,37.69866,-107.77715,San Juan,CO,10660,SNTL
+Stillwater Creek,793,40.22543,-105.91977,Grand,CO,8720,SNTL
+Stump Lakes,797,37.47621,-107.63295,San Juan,CO,11200,SNTL
+Summit Ranch,802,39.71796,-106.15802,Summit,CO,9400,SNTL
+Sundance,05K22,39.56667,-105.73333,Park,CO,11100,SNOW
+Telluride,07M02,37.93333,-107.80000,San Miguel,CO,8800,SNOW
+Tennessee Pass #2,06K25,39.35000,-106.35000,Lake,CO,10280,SNOW
+Tower,825,40.53743,-106.67680,Routt,CO,10500,SNTL
+Trail Creek,1283,38.87851,-106.65221,Gunnison,CO,10473,SNTLT
+Trapper Lake,827,39.99884,-107.23620,Garfield,CO,9700,SNTL
+Trinchera,829,37.35328,-105.23233,Costilla,CO,10860,SNTL
+Trout Creek Pass,06L12,38.91667,-106.05000,Chaffee,CO,9720,SNOW
+Trout Lake #2,07M28,37.83333,-107.88333,San Miguel,CO,9780,SNOW
+Twin Lakes Tunnel,06K03,39.08333,-106.53333,Lake,CO,10450,SNOW
+University Camp,05J08,40.03333,-105.56667,Boulder,CO,10300,SNOW
+University Camp,838,40.03279,-105.57615,Boulder,CO,10300,SNTL
+Upper Rio Grande,839,37.72194,-107.26015,Hinsdale,CO,9400,SNTL
+Upper San Juan,840,37.48576,-106.83535,Mineral,CO,10200,SNTL
+Upper San Juan,06M03,37.48333,-106.83333,Mineral,CO,10200,SNOW
+Upper Taylor,1141,38.99077,-106.75422,Gunnison,CO,10640,SNTL
+Ute Creek,1005,37.61497,-105.37327,Costilla,CO,10650,SNTL
+Ute Creek,05M17,37.61667,-105.36667,Costilla,CO,10650,SNOW
+Vail Mountain,842,39.61676,-106.38006,Eagle,CO,10300,SNTL
+Vallecito,843,37.48510,-107.50680,La Plata,CO,10880,SNTL
+Vasquez,05K19,39.85000,-105.81667,Grand,CO,9600,SNOW
+Wager Gulch,1188,37.88248,-107.36430,Hinsdale,CO,11100,SNTL
+Weminuche Creek,1160,37.51976,-107.32152,Archuleta,CO,10740,SNTL
+Weston,06K26,39.06667,-106.01667,Park,CO,9300,SNOW
+Whiskey Ck,857,37.21411,-105.12245,Las Animas,CO,10220,SNTL
+Wild Basin,05J05,40.20000,-105.60000,Boulder,CO,9600,SNOW
+Wild Basin,1042,40.20105,-105.60248,Boulder,CO,9560,SNTL
+Willow Creek Pass,06J05,40.35000,-106.10000,Grand,CO,9540,SNOW
+Willow Creek Pass,869,40.34703,-106.09433,Grand,CO,9540,SNTL
+Willow Park,870,40.43254,-105.73337,Larimer,CO,10700,SNTL
+Winfield Middle,06K50,38.98000,-106.44750,Chaffee,CO,10340,SNOW
+Wolf Creek Summit,874,37.47922,-106.80170,Mineral,CO,11000,SNTL
+Wurtz Lower,06K51,39.39239,-106.36090,Eagle,CO,10690,SNOW
+Wurtz Middle,06K52,39.40900,-106.36784,Eagle,CO,10436,SNOW
+Yampa View,06J10,40.36667,-106.76667,Routt,CO,8200,SNOW
+Zirkel,1033,40.79488,-106.59535,Jackson,CO,9340,SNTL

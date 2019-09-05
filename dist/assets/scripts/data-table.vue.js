@@ -7,8 +7,8 @@ Vue.component('data-table', {
     <table>
       <thead>
         <tr>
-          <th class="station-name">SNOTEL Station Name<small>{{displayDate}}</small></th>
-          <th>County</th>
+          <th class="station-name">SNOTEL Station<small>{{displayDate}}</small></th>
+          <th class="county">County</th>
           <th class="numeric">Elevation<small>(ft)</small></th>
           <th class="numeric">Snow Depth<small>(in)</small></th>
         </tr>
@@ -37,7 +37,7 @@ Vue.component('data-table-row', {
     <tr>
       <!--<td>{{ site.stationId }}</td>-->
       <td class="station-name">{{ site.name }}</td>
-      <td>{{ site.county }}</td>
+      <td class="county">{{ site.county }}</td>
       <td class="numeric">{{ displayElevation }}</td>
       <td class="numeric">{{ site.snow }}</td>
     </tr>

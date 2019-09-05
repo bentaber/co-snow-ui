@@ -133,15 +133,6 @@ section {
   margin: 0 auto;
 }
 
-/* tablets and up */
-@media screen and (min-width: 768px) {
-  section {
-    width: 700px;
-    padding: 0;
-    margin: 0 auto;
-  }  
-}
-
 .header {
   margin: 40px auto;
 }
@@ -191,6 +182,10 @@ p i.material-icons-round {
   color: var(--color-nord-15);
   font-size: 1.2em;
   position: relative; top: 4px;
+}
+
+.hide-mobile {
+  display: none;
 }
 
 .date {
@@ -265,7 +260,7 @@ th {
 td, th {
   line-height: 1.6em;
   text-align: left;
-  width: 15%;
+  width: 30%;
 }
 
 th small {
@@ -280,6 +275,12 @@ th.station-name,
 td.station-name {
   width: 40%;
 }
+
+/* save table col space on small devices */
+th.county, td.county {
+  display: none;
+}
+
 table .numeric {
   text-align: right;
 }
@@ -295,10 +296,33 @@ td.numeric {
 
 .footer {
   margin-top: 60px;
-  padding: 10px 0;
 }
 
 .footer a {
   color: var(--color-nord-2);
   text-decoration: none;
+}
+
+
+/* tablets and up */
+@media screen and (min-width: 768px) {
+  section {
+    width: 700px;
+    padding: 0;
+    margin: 0 auto;
+  }  
+  th.county, td.county {
+    display: table-cell;
+  }
+  td, th {
+    width: 15%;
+  }
+  th.station-name,
+  td.station-name {
+    width: 40%;
+  }
+  
+  .hide-mobile {
+    display: inline;
+  }
 }

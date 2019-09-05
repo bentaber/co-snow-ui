@@ -26,7 +26,7 @@ function map(el, baseURL) {
   }
   
   function getDataURL() {
-    return baseURL + dateFormat(currentDate) + "/";
+    return baseURL + dateFormat(currentDate);
   }
   
   function nextSnow() {

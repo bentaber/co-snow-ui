@@ -65,8 +65,6 @@ function map(el, baseURL) {
     }).slice(0,10);
 
     vueMap.sites = sites;
-
-    // so unnecessary.. WHY MOFO
     vueMap.date = currentDate;
   }
 
@@ -187,8 +185,8 @@ function map(el, baseURL) {
         container: document.getElementById("map"),
         style: "mapbox://styles/mapbox/light-v10",
         center: [-105.552, 39.0311],
-        zoom: 6,
-        minZoom: 5.5,
+        zoom: 5.8,
+        minZoom: 5.8,
         maxZoom: 12
       });
       registerMapEventHandlers();

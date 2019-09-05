@@ -310,7 +310,11 @@ td.numeric {
     width: 700px;
     padding: 0;
     margin: 0 auto;
-  }  
+  } 
+  /* mapbox occassionally flakes if width is not defined */
+  #map {
+    width: 688px;
+  }
   th.county, td.county {
     display: table-cell;
   }

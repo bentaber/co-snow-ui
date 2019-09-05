@@ -7,8 +7,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"" rel="stylesheet">
-    <link href="/assets/styles/main.css"" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link href="/assets/styles/main.css" rel="stylesheet" />
   </head>
 
   <body>
@@ -69,21 +69,22 @@
     <section class="footer">
       <p>&copy; <a href="https://github.com/bentaber">Ben Taber</a>, 2019</p>
     </section>
+    
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="/assets/scripts/data-table.vue.js"></script>
+    <script src="/assets/scripts/play-controls.vue.js"></script>
+    <script src="/assets/scripts/map.js"></script>
+
+    <script>
+      map(
+        document.getElementById("map-container"),
+        "https://api-cosnow.bentaber.com/api/geoJSON/"
+      );
+    </script>
   </body>
 
-  <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-  <script src="/assets/scripts/data-table.vue.js"></script>
-  <script src="/assets/scripts/play-controls.vue.js"></script>
-  <script src="/assets/scripts/map.js"></script>
-
-  <script>
-    map(
-      document.getElementById("map-container"),
-      "https://api-cosnow.bentaber.com/api/geoJSON/"
-    );
-  </script>
 
 
 </html>

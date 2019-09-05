@@ -129,8 +129,17 @@ html {
 }
 
 section {
-  width: 700px;
+  padding: 0 10px;
   margin: 0 auto;
+}
+
+/* tablets and up */
+@media screen and (min-width: 768px) {
+  section {
+    width: 700px;
+    padding: 0;
+    margin: 0 auto;
+  }  
 }
 
 .header {
@@ -188,6 +197,8 @@ p i.material-icons-round {
   margin: 40px 0 10px 0;
   font-size: 1.4em;
   font-weight: 500;
+  position: relative;
+  top: 3px;
 }
 #map {  
   height: 520px;  
@@ -249,7 +260,7 @@ table {
 }
 
 th {
-  font-weight: bold;
+  font-weight: 500;
 }
 td, th {
   line-height: 1.6em;
@@ -280,4 +291,14 @@ td.numeric {
 
 .about {
   margin-top: 80px;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 10px 0;
+}
+
+.footer a {
+  color: var(--color-nord-2);
+  text-decoration: none;
 }

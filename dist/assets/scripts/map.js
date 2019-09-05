@@ -71,10 +71,11 @@ function map(el, baseURL) {
   }
 
   function registerMapEventHandlers() {
-    //constrain to Colorado
-    map.setMaxBounds(map.getBounds());
     
     map.on("load", () => {
+      //constrain to Colorado
+      map.setMaxBounds(map.getBounds());
+      
       map.addSource("snotel-snow", {
         type: "geojson",
         data: getDataURL(currentDate)

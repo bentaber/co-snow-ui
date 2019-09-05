@@ -18,7 +18,7 @@
     <section class="main">
       <p>Daily snow depth (in inches) across the state of Colorado as measured at 200+ individual locations between October 1, 2018 and July 1, 2019.  Data courtesy of NRCS National Water and Climate center's <a href="https://www.wcc.nrcs.usda.gov/snow/">Snow Telemetry (SNOTEL)</a> and Snow Course Data and Products.</p>
       
-      <div id="map-container" v-cloak>
+      <div id="map-container">
         <play-controls 
           v-bind:date="date"
           v-on:play="play"
@@ -64,7 +64,8 @@
   </body>
 
   <script src="https://api.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
   <script src="/assets/scripts/data-table.vue.js"></script>
   <script src="/assets/scripts/play-controls.vue.js"></script>
   <script src="/assets/scripts/map.js"></script>
